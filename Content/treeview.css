@@ -1,0 +1,26 @@
+﻿ul, #tree {
+    list-style-type: none;
+}
+
+.node {
+    cursor: pointer;
+}
+
+    .node::before {
+        content: "\27A4";
+        color: red;
+        display: inline-block;
+        margin-right: 6px;
+    }
+
+.node-down::before {
+    transform: rotate(90deg);
+}
+
+.nested {
+    display: none;
+}
+
+.active {
+    display: block;
+}
