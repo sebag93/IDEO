@@ -13,8 +13,8 @@ namespace IDEO.Controllers
         public ActionResult Index()
         {
             var htmlstring = "";
-            var nodes = db.IdeoTree.Where(a => a.parent_id == 0).ToList();
-            var leafs = db.IdeoTree.Where(a => a.parent_id > 0).ToList();
+            var nodes = db.IdeoTree.Where(a => a.parent_id == 0).OrderBy(a=>a.name).ToList();
+            var leafs = db.IdeoTree.Where(a => a.parent_id > 0).OrderBy(a => a.name).ToList();
             foreach(var node in nodes)
             {
                 if ((db.IdeoTree.Where(a=> a.parent_id.Equals(node.id)).Count())>0)

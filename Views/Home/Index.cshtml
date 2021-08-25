@@ -1,9 +1,6 @@
-﻿
-@{
-    ViewBag.Title = "Home Page";
-} 
-
-@Styles.Render("~/Content/treeview.css")
+﻿@{
+    ViewBag.Title = "Struktura drzewiasta";
+}
 
 <ul id="tree">
     <li>
@@ -12,52 +9,11 @@
             @Html.Raw(ViewBag.htmlstring)
         </ul>
     </li>
-
-    @*@foreach(var node in ViewBag.nodes)
-                    {
-                        var x = 0;
-                        if (x > 0)
-                        {
-        <li>
-            <span class="node" /> @node.name
-        </li>
-        }
-        else
-        {
-        <li>
-            @node.name
-        </li>
-        }
-
-        }
-        <li>
-            <span class="node">Beverages</span>
-            <ul class="nested">
-                <li>Water</li>
-                <li>Coffee</li>
-                <li>
-                    <span class="node">Tea</span>
-                    <ul class="nested">
-                        <li>Black Tea</li>
-                        <li>White Tea</li>
-                        <li>
-                            <span class="node">Green Tea</span>
-                            <ul class="nested">
-                                <li>Sencha</li>
-                                <li>Gyokuro</li>
-                                <li>Matcha</li>
-                                <li>Pi Lo Chun</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>*@
 </ul>
 
 <script>
     var toggler = document.getElementsByClassName("node");
-        var i;
+    var i;
     for (i = 0; i < toggler.length; i++) {
         toggler[i].addEventListener("click", function () {
             this.parentElement.querySelector(".nested").classList.toggle("active");
