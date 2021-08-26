@@ -6,4 +6,4 @@
 
 ![Alt text](/screenshots/3.png?raw=true "Optional Title")
 
-![Alt text](/screenshots/3.png?raw=true "Optional Title")
+![Alt text](/screenshots/4.png?raw=true "Optional Title")
