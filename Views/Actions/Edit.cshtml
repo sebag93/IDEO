@@ -1,7 +1,64 @@
-﻿
+﻿@model IDEO.Models.EditViewModel
 @{
     ViewBag.Title = "Edit";
 }
 
 <h3>Edycja elementu struktury, zmiana nazwy/przenoszenie do innego węzła.</h3>
 
+@using (Html.BeginForm("Edit", "Actions", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+
+    if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success">
+                <strong>Sukces!</strong> @ViewBag.Message
+            </div>
+        }
+    }
+    else
+    {
+        @Html.AntiForgeryToken()
+        <hr />
+        <div class="form-group">
+            @Html.Label("Element do edycji", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Name, new SelectList(ViewBag.Items), new { @class = "col-md-2 control-label", @style = "margin-right:10px" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.NewName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.NewName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.NewName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Nowy węzeł", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.NewParentName, new SelectList(ViewBag.Items2), new { @class = "col-md-2 control-label", @style = "margin-right:10px" })
+                @Html.ValidationMessageFor(m => m.NewParentName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-success" value="Zapisz" />
+                @Html.ActionLink("Anuluj", "../Home/Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-danger">
+                <strong>Błąd! </strong>@ViewBag.Message
+            </div>
+        }
+    }
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

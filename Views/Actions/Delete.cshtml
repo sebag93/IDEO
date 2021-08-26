@@ -4,16 +4,30 @@
 }
 
 <h3>Usuwanie elementu struktury. W przypadku wyboru węzła, usunięte zostaną również wszystkie jego liście.</h3>
+<hr />
 
 @using (Html.BeginForm("Delete", "Actions", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <div class="form-group">
+    @*<div class="form-group">
         <div class="col-md-offset-1 col-md-10">
-            <h3>
-                @Html.DropDownListFor(m => m.Name, new SelectList(ViewBag.Items), new { @class = "col-md-2 control-label", @style = "margin-right:10px" })
-                <input type="submit" value="Usuń" class="btn btn-danger" />
-                @Html.ActionLink("Anuluj", "../Home/Index", null, new { @class = "btn btn-default" })
-            </h3>
+
+            @Html.Label("Element do usunięcia")
+            @Html.DropDownListFor(m => m.Name, new SelectList(ViewBag.Items), new { @class = "col-md-2 control-label", @style = "margin-right:10px" })
+            <input type="submit" value="Usuń" class="btn btn-danger" />
+            @Html.ActionLink("Anuluj", "../Home/Index", null, new { @class = "btn btn-default" })
+
+        </div>
+    </div>*@
+    <div class="form-group">
+        @Html.Label("Element do usunięcia", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Name, new SelectList(ViewBag.Items), new { @class = "col-md-2 control-label", @style = "margin-right:10px" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Usuń" class="btn btn-danger" />
+            @Html.ActionLink("Anuluj", "../Home/Index", null, new { @class = "btn btn-default" })
         </div>
     </div>
 }

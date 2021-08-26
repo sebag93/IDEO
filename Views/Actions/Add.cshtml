@@ -21,7 +21,6 @@
     else
     {
         @Html.AntiForgeryToken()
-        <hr />
         <div class="form-group">
             @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
@@ -32,7 +31,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.ParentName, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.ParentName, new SelectList(ViewBag.test), new { @class = "col-md-2 control-label", @style = "margin-right:10px" })
+                @Html.DropDownListFor(m => m.ParentName, new SelectList(ViewBag.Items), new { @class = "col-md-2 control-label", @style = "margin-right:10px" })
                 @Html.ValidationMessageFor(m => m.ParentName, "", new { @class = "text-danger" })
             </div>
         </div>
