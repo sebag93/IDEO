@@ -4,8 +4,16 @@ namespace IDEO.Models
 {
     public class DeleteViewModel
     {
-        [Display(Name = "Wybierz element")]
-        [Required]
         public string Name { get; set; }
+    }
+
+    public class AddViewModel
+    {
+        [Required]
+        [Display(Name = "Nazwa")]
+        public string Name { get; set; }
+
+        [Display(Name = "Nazwa rodzica")]
+        public string ParentName { get; set; }
     }
 }
